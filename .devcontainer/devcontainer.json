@@ -1,0 +1,44 @@
+
+{
+  "$schema": "https://json.schemastore.org/devcontainer.json",
+  "name": "Codespace - Python + Perl + Bash",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+  // Features (instaladores prontos, sem Dockerfile)
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {},
+    "ghcr.io/devcontainers/features/python:1": { "version": "3.12" },
+    "ghcr.io/haukex/devcontainer-features/perl:1": { "local_lib": true }
+  },
+
+  // Variáveis & usuário
+  "remoteUser": "vscode",
+  "containerEnv": { "SHELL": "/bin/bash" },
+  "workspaceFolder": "/workspaces/${containerWorkspaceFolderBasename}",
+
+  // Pós-criação: venv Python + deps Perl + ShellCheck
+  "postCreateCommand": "set -eux; \
+    python -m venv .venv; \
+    . .venv/bin/activate; \
+    if [ -f requirements.txt ]; then pip install -r requirements.txt; fi; \
+    sudo apt-get update; \
+    sudo apt-get install -y --no-install-recommends shellcheck; \
+    perl -MCPAN -e 'print qq(OK)'; \
+    exit 0",
+
+  // VS Code dentro do container
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "python.defaultInterpreterPath": "/workspaces/${containerWorkspaceFolderBasename}/.venv/bin/python",
+        "editor.formatOnSave": true
+      },
+      "extensions": [
+        "ms-python.python",
+        "richterger.perl",
+        "timonwong.shellcheck"
+      ]
+    }
+  }
+}
