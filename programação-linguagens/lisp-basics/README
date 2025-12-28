@@ -1,0 +1,47 @@
+# 🗂️ Lisp Basics: A Arte do Parêntese
+
+Bem-vindo ao diretório de fundamentos de **Lisp** (List Processing). Esta pasta serve como meu laboratório pessoal para explorar uma das linguagens de programação mais antigas, elegantes e poderosas que ainda influenciam o software moderno.
+
+---
+
+## 📂 Estrutura da Pasta
+
+| Arquivo | Descrição |
+| :--- | :--- |
+| `theory.md` | 📔 Documentação teórica sobre S-expressions, REPL e a filosofia Lisp. | em andamento
+| `hello.lisp` | 🚀 O clássico primeiro programa para testar o ambiente. | em andamento
+| `functions.lisp` | 🛠️ Exemplos de criação de funções e recursividade. | em andamento
+| `lists.lisp` | 🏗️ Manipulação de listas (car, cdr, cons). | em andamento
+
+---
+
+## 🧠 O que estou aprendendo?
+
+Nesta fase inicial, o foco está em quebrar o paradigma imperativo e abraçar o **Homoiconicismo** (onde o código e os dados têm a mesma estrutura).
+
+### Tópicos abordados na Teoria:
+* **S-Expressions:** Entendendo a sintaxe baseada em listas.
+* **REPL (Read-Eval-Print Loop):** O poder do desenvolvimento interativo.
+* **Funções de Primeira Classe:** Como Lisp trata funções como qualquer outro dado.
+
+---
+
+## 🐧 Configuração Lisp (Debian/Ubuntu)
+
+Para instalar o Lisp no GNU/Linux Debian 13
+
+sudo apt update
+sudo apt upgrade
+sudo apt install sbcl
+curl -O https://beta.quicklisp.org/quicklisp.lisp
+sbcl --load quicklisp.lisp --eval '(quicklisp-quickstart:install)' --eval '(ql:add-to-init-file)' --eval '(quit)'
+
+## 🛠️ Como rodar os códigos?
+
+Para executar os exemplos desta pasta no seu ambiente (Configurado conforme o README principal), utilize o **SBCL**:
+
+1. Abra o seu terminal.
+2. Navegue até esta pasta: `cd lisp-basics`.
+3. Execute um arquivo específico:
+   ```bash
+   sbcl --script nome_do_arquivo.lisp
